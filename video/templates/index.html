@@ -1,0 +1,154 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Video Transcriber</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'img/core-img/icon.ico' %}">
+
+    <!-- Core Stylesheet -->
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="{% static 'progress.css' %}"> -->
+
+</head>
+
+<body>
+
+    <!-- Preloader Start -->
+    <div id="preloader">
+        <div class="colorlib-load"></div>
+    </div>
+
+    <!-- ***** Header Area Start ***** -->
+    <header class="header_area animated">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- Menu Area Start -->
+                <div class="col-12 col-lg-10">
+                    <div class="menu_area">
+                        <nav class="navbar navbar-expand-lg navbar-light">
+                            <!-- Logo -->
+                            <a class="navbar-brand" href="#">Video Transcriber</a>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ca-navbar" aria-controls="ca-navbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
+
+    <!-- ***** Wellcome Area Start ***** -->
+    <section class="wellcome_area clearfix" id="home">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12 col-md">
+                    <div class="wellcome-heading">
+                        <h2>To Covert Video To Text</h2>
+                        <h3>AI</h3>
+                        &nbsp;
+                        <p><b>Step 1</b> Choose Video file</p>
+                        <p><b>Step 2</b> Chose Language</p>
+                        <p><b>Step 3</b> Click on Upload</p>
+                    </div>
+                    <div class="get-start-area">
+                        <!-- Form Start -->
+
+                        <form action="" method="post" enctype="multipart/form-data" class="form-inline">
+                            {% csrf_token %}
+                            <input type="file" name="Video" style="width:220px;padding:20px;color:white;margin-right:15px" id="video" required>
+                            <select style="width:120px; margin-right: 10px;color:white;margin-right:15px" class="form-control email" id="video" name="lang">
+                                <option value="hi">HINDI</option>
+                                <option value="pa">PUNJABI</option>
+                                <option value="ko">Korean</option>
+                                <option value="zh-TW">Chinese</option>
+                                <option value="fa">Persian</option>
+                            </select>
+                            <input type="submit" onclick="infinite()" class="btn btn-info" value="Upload" id="video" style="padding:10px;">
+                        </form>
+                        <!-- Form End -->
+                    </div>
+                </div>
+                {% if status %}
+                <div id="outt" style="height:250px;width:250px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;">
+                    {{out}}
+                </div>
+                {% endif %}
+                <div class="wrapper">
+                    <div class="progressbar-wrapper">
+                        <center>
+                            <h3 id="progresss"></h3>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div>
+            {{out}}
+        </div> -->
+
+    </section>
+    <!-- ***** Wellcome Area End ***** -->
+
+    <!-- ***** Footer Area Start ***** -->
+    <footer class="footer-social-icon text-center section_padding_70 clearfix">
+        <!-- footer logo -->
+        <div class="footer-text">
+            <h2>Video Transcriber</h2>
+
+            <div class="footer-menu">
+                <nav>
+                    <ul>
+                        <li><a href="#">Python</a></li>
+                        <li><a href="#">Django</a></li>
+                        <li><a href="#">HTML</a></li>
+                        <li><a href="#">CSS</a></li>
+                        <li><a href="#">JavaScript</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Foooter Text-->
+            <div class="copyright-text">
+                <p>Made By Vishavjeet Sharma</p>
+            </div>
+    </footer>
+    <!-- ***** Footer Area Start ***** -->
+    <script>
+        document.getElementById("video").attributes["required"] = "";
+        function infinite() {
+            let label = document.getElementById("progresss");
+            label.innerHTML = "Converting...";            
+        }
+     
+    </script>
+    <!-- Jquery-2.2.4 JS -->
+    <script src="{% static 'js/jquery-2.2.4.min.js' %}"></script>
+    <!-- Popper js -->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap-4 Beta JS -->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- All Plugins JS -->
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <!-- Slick Slider Js-->
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <!-- Footer Reveal JS -->
+    <script src="{% static 'js/footer-reveal.min.js' %}"></script>
+    <!-- Active JS -->
+    <script src="{% static 'js/active.js' %}"></script>
+</body>
+
+</html>
